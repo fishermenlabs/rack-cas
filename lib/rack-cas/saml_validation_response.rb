@@ -61,7 +61,7 @@ module RackCAS
       require 'net/http'
       return @response unless @response.nil?
 
-      http = Net::HTTP.new(@url.host, @url.inferred_port)
+      http = Net::HTTP.new(@url.host, @url.inferred_port, @proxy&.host, @proxy&.port, @proxy&.user, @proxy&.password)
 
       if @url.scheme == 'https'
         http.use_ssl = true

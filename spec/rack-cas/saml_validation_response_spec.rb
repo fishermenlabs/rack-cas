@@ -4,6 +4,7 @@ require 'rack-cas/saml_validation_response'
 describe RackCAS::SAMLValidationResponse do
   before { stub_request(:post, /samlValidate/).to_return(headers: { 'Accept' => '*/*', 'Content-Type' => 'application/soap+xml; charset=utf-8' }, body: fixture(fixture_filename)) }
   let(:url) { 'http://example.com/cas/samlValidate?TARGET=http%3A%2F%2Fexample.org%2F' }
+  let(:proxy) { 'http://user:password@proxy.com:9999' }
   let(:ticket) { 'ST-718673-vjzOrfL70HlOb5TviNTT-odo-665.example.org' }
   let(:response) { RackCAS::SAMLValidationResponse.new(url, ticket) }
   subject { response }

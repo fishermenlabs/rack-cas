@@ -61,7 +61,7 @@ class Rack::CAS
   protected
 
   def server
-    @server ||= RackCAS::Server.new(RackCAS.config.server_url)
+    @server ||= RackCAS::Server.new(RackCAS.config.server_url, RackCAS.config.proxy)
   end
 
   def ignore_intercept?(request)

@@ -44,6 +44,14 @@ Since protocol `p3` the protocol is prepended in certain urls. If you wish to us
 
 [For more info](http://jasig.github.io/cas/4.1.x/protocol/CAS-Protocol-Specification.html#cas-uris)
 
+### Proxy
+
+Proxy server support is set to nil by default but can be configured with an appropriate UIR in `config/application.rb`
+
+```ruby 
+config.rack_cas.proxy = 'https://username:password@proxy_server.com:9999
+```
+
 ### Single Logout ###
 
 If you wish to enable [single logout](http://apereo.github.io/cas/4.0.x/installation/Logout-Single-Signout.html) you'll need to modify your configuration as below.

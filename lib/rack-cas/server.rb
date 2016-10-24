@@ -1,11 +1,13 @@
 require 'rack-cas/url'
 require 'rack-cas/saml_validation_response'
 require 'rack-cas/service_validation_response'
+require 'uri'
 
 module RackCAS
   class Server
-    def initialize(url)
+    def initialize(url, proxy = '')
       @url = RackCAS::URL.parse(url)
+      @proxy = URI(proxy)
     end
 
     def login_url(service_url, params = {})
