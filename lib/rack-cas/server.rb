@@ -5,9 +5,9 @@ require 'uri'
 
 module RackCAS
   class Server
-    def initialize(url, proxy = '')
+    def initialize(url, proxy = nil)
       @url = RackCAS::URL.parse(url)
-      @proxy = URI(proxy)
+      @proxy = URI(proxy) unless proxy.nil?
     end
 
     def login_url(service_url, params = {})
