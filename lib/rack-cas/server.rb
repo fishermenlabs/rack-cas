@@ -27,9 +27,9 @@ module RackCAS
 
     def validate_service(service_url, ticket)
       unless RackCAS.config.use_saml_validation?
-        response = ServiceValidationResponse.new validate_service_url(service_url, ticket)
+        response = ServiceValidationResponse.new validate_service_url(service_url, ticket), @proxy
       else
-        response = SAMLValidationResponse.new saml_validate_url(service_url), ticket
+        response = SAMLValidationResponse.new saml_validate_url(service_url), ticket, @proxy
       end
       [response.user, response.extra_attributes]
     end

@@ -7,8 +7,9 @@ module RackCAS
 
     REQUEST_HEADERS = { 'Accept' => '*/*' }
 
-    def initialize(url)
+    def initialize(url, proxy = nil)
       @url = URL.parse(url)
+      @proxy = proxy
     end
 
     def user

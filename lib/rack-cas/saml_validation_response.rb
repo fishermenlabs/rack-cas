@@ -8,9 +8,10 @@ module RackCAS
       'Content-Type' => 'application/soap+xml; charset=utf-8'
     }
 
-    def initialize(url, ticket)
+    def initialize(url, ticket, proxy = nil)
       @url = URL.parse(url)
       @ticket = ticket
+      @proxy = proxy
     end
 
     def user
@@ -60,7 +61,6 @@ module RackCAS
     def response
       require 'net/http'
       return @response unless @response.nil?
-
       http = Net::HTTP.new(@url.host, @url.inferred_port, @proxy&.host, @proxy&.port, @proxy&.user, @proxy&.password)
 
       if @url.scheme == 'https'
